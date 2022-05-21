@@ -50,6 +50,9 @@ public class App {
             
         }
         
+        
+        System.out.println("-------------------------");
+        
         /*convertim d'arrayList a hashset amb el constructor
         Al convertir a hashset, no permet elements duplicats i no ordena els elements
         */
@@ -63,13 +66,14 @@ public class App {
        
        
        Iterator iterator = mesosSet.iterator();
+     
        
-        
         for (int i = 0; i < mesosSet.size(); i++) {
             
-            System.out.println(iterator.next());
+            System.out.println(iterator.next().toString());
         }
-      
+        
     }
     
 }
+
