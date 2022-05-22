@@ -1,5 +1,6 @@
 package Backend.Sprint1.S1_03.n1exercici1;
 
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -23,6 +24,8 @@ public class App {
         Month month10 = new Month("Octubre");
         Month month11 = new Month("Novembre");
         Month month12 = new Month("Decembre");
+        Month month13 = new Month("Decembre");
+        
         
         
         mesos.add(month1);
@@ -38,9 +41,12 @@ public class App {
         mesos.add(month12);
         
         
+        
         //Introduim el mes 8 (agost) a la posicio 7 del array
         mesos.add(7, month8);
         
+        
+        System.out.println(mesos.size());
         
         //Comprobem que el array mante el ordre correcte 
         
@@ -60,9 +66,18 @@ public class App {
        HashSet<Month> mesosSet = new HashSet<Month>(mesos);
        
        //Podem comprobar que encara que afegin el mateix element 2 vegades nomes imprimeix un
-       //ja que no admet duplicats
+
        mesosSet.add(month8);
        mesosSet.add(month8);
+       mesosSet.add(month12);
+       mesosSet.add(month12);
+       mesosSet.add(month13);
+       mesosSet.add(month13);
+      
+       
+       
+       System.out.println("total mesos despres del hashet " +mesosSet.size()); 
+       
        
        
        Iterator iterator = mesosSet.iterator();
@@ -70,10 +85,16 @@ public class App {
        
         for (int i = 0; i < mesosSet.size(); i++) {
             
+            
             System.out.println(iterator.next().toString());
+            
+           
         }
+        
+          
         
     }
     
 }
+
 
