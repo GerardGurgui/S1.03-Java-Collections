@@ -2,6 +2,8 @@ package Backend.Sprint1.S1_03.n1exercici2; //casa
 
 package N1Exercici2;
 
+package S1_03.N1Exercici2;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
