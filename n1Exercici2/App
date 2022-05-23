@@ -1,4 +1,6 @@
-package Backend.Sprint1.S1_03.n1exercici2;
+package Backend.Sprint1.S1_03.n1exercici2; //casa
+
+package N1Exercici2;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -12,6 +14,7 @@ public class App {
         
         List<Integer> numeros = new ArrayList<>();
         
+        
         numeros.add(10);
         numeros.add(20);
         numeros.add(30);
@@ -21,29 +24,37 @@ public class App {
         
         //2na List
         List<Integer> numerosInversos = new ArrayList<>();
+        
         numerosInversos.addAll(numeros);
         
         
-        System.out.println("Abans de invertir el ordre: " +numerosInversos);
+        System.out.println("Abans d'invertir el ordre: " +numerosInversos);
         
+        //Invertir el ordre de la llista 
         Collections.reverse(numerosInversos);
         
-        System.out.println("Despres de invertir el ordre: " +numerosInversos);
+        System.out.println("Despres d'invertir el ordre: " +numerosInversos);
         
         
-        ListIterator listI = numeros.listIterator();
+        //ListIterator per llista 1
+        ListIterator list1 = numeros.listIterator();
         
+        System.out.println("Print elements llista 1 desde iterator ");
         
-        while(listI.hasNext()){
+        while(list1.hasNext()){
             
-            System.out.println(listI.next());
-            numerosInversos.add(listI.nextIndex());
-            
+            System.out.println(list1.next());
             
         }
-       
         
-        System.out.println("Despres d'afegir desde la llista 1 " +numerosInversos);
+        //ListIterator per Llista 2
+        ListIterator list2 = numerosInversos.listIterator();
+        
+        list2.add(numeros);
+        
+        
+        System.out.println("Print elements llista 2 desde iterator " +numerosInversos);
+        
         
     }
     
