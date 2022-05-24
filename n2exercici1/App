@@ -5,6 +5,12 @@ import java.util.Iterator;
 import java.util.Scanner;
 import java.util.Set;
 
+package S1_03.N2Exercici1;
+
+import java.util.HashSet;
+import java.util.Set;
+import java.util.TreeSet;
+
 public class App {
     
     public static void main(String[] args) {
@@ -19,7 +25,7 @@ public class App {
         
         
         
-        Set<Restaurant> llistaRestaurants = new HashSet<Restaurant>();
+        Set<Restaurant> llistaRestaurants = new HashSet<>();
         
         
         llistaRestaurants.add(restaurant1);
@@ -29,99 +35,132 @@ public class App {
         llistaRestaurants.add(restaurant5);
         llistaRestaurants.add(restaurant6);
         
+//        
+//        for (Restaurant llistaRestaurant : llistaRestaurants) {
+//            
+//            System.out.println(llistaRestaurant);
+//        }
+//        
         
+        //Nivell 2 Exercici 2
+            //Convertim de hashset a treeSet per poder ordenar la llista, pasem per parametre la 1ra llista
+            
+            Set<Restaurant> llistaRestaurantsTree;
+            
+            
+            if (llistaRestaurants instanceof Restaurant) {
+            
+            llistaRestaurantsTree = new TreeSet<>(llistaRestaurants);
+                
+                if (((Restaurant) llistaRestaurants).equals(llistaRestaurantsTree)) {
+                    
+                    for (Restaurant restaurant : llistaRestaurantsTree) {
+                        
+                        System.out.println(restaurant);
+                    }
+                }
+               
+            }
+            
+         
+        
+        
+        //-----------------EXTRA
        
         System.out.println("llista restaurants total " +llistaRestaurants.size());
         
         
         
-        String nomRestaurant = demanarDadesText("Nom restaurant");
-        int puntuacio = demanarDadesInt(0, 10, "puntuacio restaurant");
-        
-        mostrarRestaurants(nomRestaurant, puntuacio, llistaRestaurants);
-        
-
-        
+//        String nomRestaurant = demanarDadesText("Nom restaurant");
+//        int puntuacio = demanarDadesInt(0, 10, "puntuacio restaurant");
+//        
+//        mostrarRestaurants(nomRestaurant, puntuacio, llistaRestaurants);
+//            
     }
     
     
     
-    static void introduirRestaurant(Restaurant restaurant){
-        
-         
-    }
     
-    
-    static void mostrarRestaurants(String nom, int puntuacio, Set<Restaurant> llistaRestaurants){
-        
-      
-        /*
-        quan treballem amb coleccions de tipo Set, per recorrer la llista necesitem fer us del
-        metode Iterator. Aquest metode rep un generic i ens ofereix 2 metodes necessaris per 
-        recorre elements de una coleccio
-        */
-        
-        Iterator <Restaurant> i = llistaRestaurants.iterator();
-        
-        while(i.hasNext()){
-            
-            if (nom.equals(i.next().getNom()) && puntuacio == i.next().getPuntuacio()) {
-                
-                
-                System.out.println("El nom del restaurant i puntuacio iguals existeix");
-                
-                
-            }
-            
-        }
-        
-        
-        }
-     
-    //METODES DEMANAR DADES USUARI
-    
-    
-     static int demanarDadesInt(int min, int max, String texto){
-        
-        Scanner input = new Scanner(System.in);
-        
-        int numUsuari;
-        
-    do{
-        
-        System.out.println(texto);
-        numUsuari = input.nextInt();
-        
-            if(numUsuari < min || numUsuari > max){
-                
-                System.out.println("Opció incorrecte, torni a escollir una opció");
-            }
-        
-        
-    }while(numUsuari < min || numUsuari > max);
-        
-        return numUsuari;
-    }
-    
-    
-    
-    static String demanarDadesText(String texto){
-        
-        Scanner input = new Scanner(System.in);
-        
-        String textUsuari;
-        
-        System.out.println(texto);
-        textUsuari = input.nextLine();
-        
-          
-        return textUsuari;
-    }
-    
+//    static void introduirRestaurant(Restaurant restaurant){
+//        
+//         
+//        
+//    }
+//    
+//    
+//    static void mostrarRestaurants(String nom, int puntuacio, Set<Restaurant> llistaRestaurants){
+//        
+//      
+//        /*
+//        quan treballem amb coleccions de tipo Set, per recorrer la llista necesitem fer us del
+//        metode Iterator. Aquest metode rep un generic i ens ofereix 2 metodes necessaris per 
+//        recorre elements de una coleccio
+//        */
+//        
+//        Iterator <Restaurant> i = llistaRestaurants.iterator();
+//        
+//        while(i.hasNext()){
+//            
+//            if (nom.equals(i.next().getNom()) && puntuacio == i.next().getPuntuacio()) {
+//                
+//                
+//                System.out.println("El nom del restaurant i puntuacio iguals existeix");
+//                
+//                
+//            }
+//            
+//        }
+//        
+//        
+//        }
+//    
+//    
+//     
+//    //METODES DEMANAR DADES USUARI
+//    
+//    
+//     static int demanarDadesInt(int min, int max, String texto){
+//        
+//        Scanner input = new Scanner(System.in);
+//        
+//        int numUsuari;
+//        
+//    do{
+//        
+//        System.out.println(texto);
+//        numUsuari = input.nextInt();
+//        
+//            if(numUsuari < min || numUsuari > max){
+//                
+//                System.out.println("Opció incorrecte, torni a escollir una opció");
+//            }
+//        
+//        
+//    }while(numUsuari < min || numUsuari > max);
+//        
+//        return numUsuari;
+//    }
+//    
+//    
+//    
+//    static String demanarDadesText(String texto){
+//        
+//        Scanner input = new Scanner(System.in);
+//        
+//        String textUsuari;
+//        
+//        System.out.println(texto);
+//        textUsuari = input.nextLine();
+//        
+//          
+//        return textUsuari;
+//    }
+//    
     
     
 }
-         
+        
+ 
         
     
     
