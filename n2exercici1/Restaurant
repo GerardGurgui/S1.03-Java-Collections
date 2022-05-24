@@ -2,6 +2,11 @@ package Backend.Sprint1.S1_03.n2exercici1;
 
 import java.util.Objects;
 
+package S1_03.N2Exercici1;
+
+  import java.util.Objects;
+
+
 public class Restaurant {
     
     private String nom;
@@ -78,3 +83,6 @@ public class Restaurant {
     
     
 }
+    
+
+
