@@ -1,57 +1,157 @@
-
-package S1_03.N1Exercici3;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class App {
     
     public static void main(String[] args) throws FileNotFoundException, IOException {
         
+    
     InputStreamReader isr= new InputStreamReader(System.in);
     BufferedReader teclado=new BufferedReader (isr);
-        
-        
     
     
-    
-      
-        
-    }
+    Map <String, String> textFitxerLlista = new HashMap<String, String>();
     
     
-    
-    
-   static void llegirFitxer(String nomArxiu){
-        
+    //LECTURA DEL FITXER
         File archivo;
-        FileReader fr;
+        FileReader fr = null;
         BufferedReader br;
-        
+        String textoFichero = "";
+        String[] cadena1;
         
         try {
             
-            archivo = new File(nomArxiu);
-            fr = new FileReader(archivo);
-            br = new BufferedReader(fr);
-            
-            String linea;
-            while((linea=br.readLine()) != null){
+            archivo = new File("C:\\Users\\formacio\\Desktop\\Gerard\\Sprint1\\S01.03_Collections\\N1Exercici3\\countries.txt");   
+            fr = new FileReader(archivo); 
+            br = new BufferedReader(fr); // Creem un BfReader per poder llegir líneas completas 
+
+            while((textoFichero = br.readLine()) != null){ //Anem guardan el text del fitxer al String mentres hi hagi contingut
                 
-                System.out.println(linea);
+                cadena1 = textoFichero.split(" ");
+                
+                
+                System.out.println(textoFichero);
                 
             }
             
+           
             
-       } catch (Exception e) {
-       }
+            
+       } catch (FileNotFoundException e) {  //Obrir arxius i llegir-los pot donar errors no controlats, els hem de controlar amb try catch
+           
+            System.out.println("No existeix el fitxer");
+            
+            
+       }catch (IOException e2) {
+           
+            System.out.println("Error de entrada / sortida");
+           
+        }
+        finally{    //Incorporem un finally que s'executará si o si, per que volem tancar el arxiu després de utilitzar-lo
+            
+            try {
+                
+                if (null != fr) {
+                    
+                    fr.close();
+                }
+                
+            } catch (Exception e2) {
+                
+                e2.printStackTrace();
+            }
+        }
         
-    }
-    
+        /////////////
+        
+//        
+////        String[] cadena1 = textoFichero.split(" ");
+//        
+//        for (String string : cadena1) {
+//            
+//            System.out.println(string);
+//            
+//        }
+//        
+//        
+//        textFitxerLlista.put(textoFichero, textoFichero);
+//        
+        
+        
+        
+        
+        
+        
+        
+//        String[] cadena1 = textoFichero.split("-");
+//        String[] cadena1 = textoFichero.split("-");
+        
+        
+          
+        
+        
+    }     
 }
+    
+    
+    
+    
+//    
+//   static void llegirFitxer(String nomArxiu) throws IOException{
+//        
+//        File archivo;
+//        FileReader fr = null;
+//        BufferedReader br;
+//        String textoFichero;
+//        
+//        try {
+//            
+//            archivo = new File(nomArxiu);   
+//            fr = new FileReader(archivo); 
+//            br = new BufferedReader(fr); // Creem un BfReader per poder llegir líneas completas 
+//
+//            while((textoFichero = br.readLine()) != null){ //Anem guardan el text del fitxer al String mentres hi hagi contingut
+//                
+//                System.out.println(textoFichero);
+//                
+//            }
+//            
+//            
+//       } catch (FileNotFoundException e) {  //Obrir arxius i llegir-los pot donar errors no controlats, els hem de controlar amb try catch
+//           
+//            System.out.println("No existeix el fitxer");
+//            
+//            
+//       }catch (IOException e2) {
+//           
+//            System.out.println("Error de entrada / sortida");
+//           
+//        }
+//        finally{    //Incorporem un finally que s'executará si o si, per que volem tancar el arxiu després de utilitzar-lo
+//            
+//            try {
+//                
+//                if (null != fr) {
+//                    
+//                    fr.close();
+//                }
+//                
+//            } catch (Exception e2) {
+//                
+//                e2.printStackTrace();
+//            }
+//        }
+//        
+//   } 
+//   
+//}
+
