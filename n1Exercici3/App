@@ -4,20 +4,21 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Scanner;
+
+
+
 
 public class App {
     
     public static void main(String[] args) throws FileNotFoundException, IOException {
         
     
-    InputStreamReader isr= new InputStreamReader(System.in);
-    BufferedReader teclado=new BufferedReader (isr);
-    
-    
+//    InputStreamReader isr= new InputStreamReader(System.in);
+//    BufferedReader teclado=new BufferedReader (isr);
+//    
+//    
     Map <String, String> textFitxerLlista = new HashMap<String, String>();
     
     
@@ -25,38 +26,68 @@ public class App {
         File archivo;
         FileReader fr = null;
         BufferedReader br;
-        String textoFichero = "";
-        String[] cadena1;
+        String textoFichero;
+        String[] separarText;
+        String[] separarText2;
+        
         
         try {
             
-            archivo = new File("C:\\Users\\formacio\\Desktop\\Gerard\\Sprint1\\S01.03_Collections\\N1Exercici3\\countries.txt");   
+//          archivo = new File("C:\\Users\\formacio\\Desktop\\Gerard\\Sprint1\\S01.03_Collections\\N1Exercici3\\countries.txt");   
+            archivo = new File("C:\\Users\\gerri\\OneDrive\\Escritorio\\countries.txt");   
             fr = new FileReader(archivo); 
             br = new BufferedReader(fr); // Creem un BfReader per poder llegir líneas completas 
 
-            while((textoFichero = br.readLine()) != null){ //Anem guardan el text del fitxer al String mentres hi hagi contingut
+            
+            
+            
+            while((textoFichero = br.readLine()) != null){
                 
-                cadena1 = textoFichero.split(" ");
+                separarText = textoFichero.split("\\s+");
                 
                 
-                System.out.println(textoFichero);
+                textFitxerLlista.put(separarText[0], separarText[1]);
+                
+                System.out.println(separarText[0]);
+                System.out.println(separarText[1]);
+                
                 
             }
             
-           
             
             
-       } catch (FileNotFoundException e) {  //Obrir arxius i llegir-los pot donar errors no controlats, els hem de controlar amb try catch
+             
+            
+            System.out.println("------------------------");
+            
+            
+            
+//            StringTokenizer siguiente = new StringTokenizer(textoFichero, " ");
+//            String [] paisos = new String[siguiente.countTokens()];
+//            
+//            int i = 0;
+//            
+//            while(siguiente.hasMoreTokens()){
+//                
+//                paisos[i] = siguiente.nextToken();
+//                System.out.println(paisos[i]);
+//                i++;
+//                
+//            }
+//            
+            
+               
+        } catch (FileNotFoundException e) {  //Obrir arxius i llegir-los pot donar errors no controlats, els hem de controlar amb try catch
            
             System.out.println("No existeix el fitxer");
             
             
-       }catch (IOException e2) {
+        }catch (IOException e2) {
            
             System.out.println("Error de entrada / sortida");
            
         }
-        finally{    //Incorporem un finally que s'executará si o si, per que volem tancar el arxiu després de utilitzar-lo
+        finally{    //Introduim un finally que s'executará si o si, per que volem tancar el arxiu després d'utilitzar-lo
             
             try {
                 
@@ -70,6 +101,11 @@ public class App {
                 e2.printStackTrace();
             }
         }
+        
+       
+            
+        
+        
         
         /////////////
         
@@ -100,8 +136,8 @@ public class App {
         
         
     }     
+
 }
-    
     
     
     
@@ -153,5 +189,7 @@ public class App {
 //        
 //   } 
 //   
+//}
+
 //}
 
