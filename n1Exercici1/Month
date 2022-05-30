@@ -1,6 +1,6 @@
 package Backend.Sprint1.S1_03.n1exercici1;
 
-import Backend.Sprint1.S1_03.n2exercici1.Restaurant;
+
 import java.util.Objects;
 
 public class Month {
