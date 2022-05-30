@@ -14,11 +14,8 @@ public class App {
     
     public static void main(String[] args) throws FileNotFoundException, IOException {
         
-    
-//    InputStreamReader isr= new InputStreamReader(System.in);
-//    BufferedReader teclado=new BufferedReader (isr);
-//    
-//    
+        
+      
     Map <String, String> textFitxerLlista = new HashMap<String, String>();
     
     
@@ -27,9 +24,9 @@ public class App {
         FileReader fr = null;
         BufferedReader br;
         String textoFichero;
-        String[] separarText;
-        String[] separarText2;
-        
+        String[] paisos;
+        StringTokenizer siguiente;
+        int i;
         
         try {
             
@@ -40,41 +37,23 @@ public class App {
 
             
             
-            
-            while((textoFichero = br.readLine()) != null){
+            while ((textoFichero = br.readLine()) != null) {
                 
-                separarText = textoFichero.split("\\s+");
+                siguiente = new StringTokenizer(textoFichero, " ");
+                paisos = new String[siguiente.countTokens()];                
+
+                i = 0;
                 
-                
-                textFitxerLlista.put(separarText[0], separarText[1]);
-                
-                System.out.println(separarText[0]);
-                System.out.println(separarText[1]);
-                
+                    while (siguiente.hasMoreTokens()) {
+
+                        paisos[i] = siguiente.nextToken();
+                        textFitxerLlista.put(paisos[0], paisos[1]);
+                        i++;
+                    }
                 
             }
             
-            
-            
-             
-            
-            System.out.println("------------------------");
-            
-            
-            
-//            StringTokenizer siguiente = new StringTokenizer(textoFichero, " ");
-//            String [] paisos = new String[siguiente.countTokens()];
-//            
-//            int i = 0;
-//            
-//            while(siguiente.hasMoreTokens()){
-//                
-//                paisos[i] = siguiente.nextToken();
-//                System.out.println(paisos[i]);
-//                i++;
-//                
-//            }
-//            
+           
             
                
         } catch (FileNotFoundException e) {  //Obrir arxius i llegir-los pot donar errors no controlats, els hem de controlar amb try catch
@@ -100,96 +79,45 @@ public class App {
                 
                 e2.printStackTrace();
             }
-        }
+        } 
         
-       
+        
+        
+       recorrerLlista(textFitxerLlista);
+        
+        
+    }   
+    
+    
+    
+    
+    
+    static void recorrerLlista(Map<String, String> textFitxerLlista){
+        
+         
+            System.out.println("-----------PAISOS---------");
+            
+            for (String pais : textFitxerLlista.keySet()) {
+                
+                System.out.println(pais);
+            }
+            
+            
+            System.out.println("-----------CAPITALS---------");
+            
+            for (String capital : textFitxerLlista.values()) {
+                
+                System.out.println(capital);
+            }
+                
             
         
-        
-        
-        /////////////
-        
-//        
-////        String[] cadena1 = textoFichero.split(" ");
-//        
-//        for (String string : cadena1) {
-//            
-//            System.out.println(string);
-//            
-//        }
-//        
-//        
-//        textFitxerLlista.put(textoFichero, textoFichero);
-//        
-        
-        
-        
-        
-        
-        
-        
-//        String[] cadena1 = textoFichero.split("-");
-//        String[] cadena1 = textoFichero.split("-");
-        
-        
-          
-        
-        
-    }     
+    }
+    
+    
+    
+    
 
 }
     
-    
-    
-//    
-//   static void llegirFitxer(String nomArxiu) throws IOException{
-//        
-//        File archivo;
-//        FileReader fr = null;
-//        BufferedReader br;
-//        String textoFichero;
-//        
-//        try {
-//            
-//            archivo = new File(nomArxiu);   
-//            fr = new FileReader(archivo); 
-//            br = new BufferedReader(fr); // Creem un BfReader per poder llegir líneas completas 
-//
-//            while((textoFichero = br.readLine()) != null){ //Anem guardan el text del fitxer al String mentres hi hagi contingut
-//                
-//                System.out.println(textoFichero);
-//                
-//            }
-//            
-//            
-//       } catch (FileNotFoundException e) {  //Obrir arxius i llegir-los pot donar errors no controlats, els hem de controlar amb try catch
-//           
-//            System.out.println("No existeix el fitxer");
-//            
-//            
-//       }catch (IOException e2) {
-//           
-//            System.out.println("Error de entrada / sortida");
-//           
-//        }
-//        finally{    //Incorporem un finally que s'executará si o si, per que volem tancar el arxiu després de utilitzar-lo
-//            
-//            try {
-//                
-//                if (null != fr) {
-//                    
-//                    fr.close();
-//                }
-//                
-//            } catch (Exception e2) {
-//                
-//                e2.printStackTrace();
-//            }
-//        }
-//        
-//   } 
-//   
-//}
-
-//}
 
