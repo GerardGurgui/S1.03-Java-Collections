@@ -1,13 +1,17 @@
+package S1_03.N1Exercici3;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.RandomAccessFile;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
-
-
+import java.util.Random;
+import java.util.Scanner;
+import java.util.StringTokenizer;
 
 
 public class App {
@@ -15,44 +19,61 @@ public class App {
     public static void main(String[] args) throws FileNotFoundException, IOException {
         
         
-      
-    Map <String, String> textFitxerLlista = new HashMap<String, String>();
+    Map <String, String> textFitxerLlista = new HashMap<>();
     
+    
+    
+    ////////PART 1 LLEGIR FITXER I GUARDAR A HASHMAP
     
     //LECTURA DEL FITXER
         File archivo;
         FileReader fr = null;
         BufferedReader br;
         String textoFichero;
-        String[] paisos;
+        String paisos;
+        String capitals;
         StringTokenizer siguiente;
-        int i;
         
         try {
             
-//          archivo = new File("C:\\Users\\formacio\\Desktop\\Gerard\\Sprint1\\S01.03_Collections\\N1Exercici3\\countries.txt");   
-            archivo = new File("C:\\Users\\gerri\\OneDrive\\Escritorio\\countries.txt");   
+          archivo = new File("C:\\Users\\formacio\\Desktop\\Gerard\\Sprint1\\S01.03_Collections\\N1Exercici3\\countries.txt");   
+//            archivo = new File("C:\\Users\\gerri\\OneDrive\\Escritorio\\countries.txt");   
             fr = new FileReader(archivo); 
             br = new BufferedReader(fr); // Creem un BfReader per poder llegir líneas completas 
 
             
+//            
+//            while ((textoFichero = br.readLine()) != null) {
+//                
+//                siguiente = new StringTokenizer(textoFichero, " "); //COM HO FAIG PER INICIALITZAR FORA BUCLE
+//                paisos = new String[siguiente.countTokens()];                
+//
+//                i = 0;
+//                
+//                    while (siguiente.hasMoreTokens()) {
+//
+//                        paisos[i] = siguiente.nextToken();
+//                        textFitxerLlista.put(paisos[0], paisos[1]);
+//                        i++;
+//                    }
+//                
+//            }
+            
             
             while ((textoFichero = br.readLine()) != null) {
-                
-                siguiente = new StringTokenizer(textoFichero, " ");
-                paisos = new String[siguiente.countTokens()];                
 
-                i = 0;
-                
-                    while (siguiente.hasMoreTokens()) {
+               siguiente = new StringTokenizer(textoFichero, " "); //COM HO FAIG PER INICIALITZAR FORA BUCLE
 
-                        paisos[i] = siguiente.nextToken();
-                        textFitxerLlista.put(paisos[0], paisos[1]);
-                        i++;
-                    }
-                
-            }
-            
+                if (siguiente.hasMoreTokens()) {
+
+                   paisos = siguiente.nextToken();
+                   capitals = siguiente.nextToken();
+
+                   textFitxerLlista.put(paisos, capitals);
+
+                }
+
+           }
            
             
                
@@ -82,8 +103,20 @@ public class App {
         } 
         
         
+        ////////////////
+        recorrerLlista(textFitxerLlista);
+
+        //////////////////////
+        //PART 2 - NOM USUARI Y RANDOM
+        demanarNomUser("Introdueixi el seu nom ");
         
-       recorrerLlista(textFitxerLlista);
+        String paisRandom = mostrarPaisRandom(textFitxerLlista);
+        
+       /////////
+       // PART 3 - ACERTAR PAIS
+        endevinarPais(paisRandom, textFitxerLlista);
+       
+        
         
         
     }   
@@ -92,10 +125,14 @@ public class App {
     
     
     
+    ///////METODES
+        //PART 1
+    
+    
     static void recorrerLlista(Map<String, String> textFitxerLlista){
         
          
-            System.out.println("-----------PAISOS---------");
+            System.out.println("-----------PAISOS-----------");
             
             for (String pais : textFitxerLlista.keySet()) {
                 
@@ -103,21 +140,72 @@ public class App {
             }
             
             
-            System.out.println("-----------CAPITALS---------");
+            System.out.println("-----------CAPITALS----------");
             
             for (String capital : textFitxerLlista.values()) {
                 
                 System.out.println(capital);
             }
-                
             
+    }
+    
+    
+    
+    /////////////
+        //PART 2
+    
+    static String demanarNomUser(String missatge){
+        
+        Scanner input = new Scanner(System.in);
+        String cadena;
+        
+        System.out.println(missatge);
+        cadena = input.nextLine();
+        return cadena;
+        
         
     }
     
     
     
     
+    static String mostrarPaisRandom(Map<String, String>textFitxerLlista){
+        
+      Random random = new Random();
+      
+      Object[] paisos = textFitxerLlista.values().toArray();
+      String paisRandom = (String) paisos[random.nextInt(paisos.length)];
+      
+      System.out.println(paisRandom);
+       
+      return paisRandom;
+        
+    }
+    
+    
+    static void endevinarPais(String paisRandom, Map<String, String> textFitxerLlista){
+        
+        Scanner input = new Scanner(System.in);
+        String capital;
+        
+        System.out.println("Quina és la capital de " +paisRandom+ " ?");
+        capital = input.nextLine();
+                    
+        /////// ITERATOR?? IF EQUALS KEY VALUE 
+        
+            if (capital.equals(textFitxerLlista.containsValue(paisRandom))) {
+            
+                System.out.println("Correcte");
+        } else {
+                
+                System.out.println("incorrecte");
+            }
+        
+        
+    }
+    
 
 }
+    
     
 
