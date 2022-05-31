@@ -60,11 +60,8 @@ public class App {
          
             paisRandom = mostrarPaisRandom(textFitxerLlista);
             puntuacio = endavinarCapital(paisRandom,llistaPaisos,llistaCapitals);
-            
-                if (puntuacio == 1) {
+            totalPuntuacio += puntuacio;
                 
-                    totalPuntuacio += puntuacio;
-                }
         }
          
         System.out.println("Puntuació total: " +totalPuntuacio);
