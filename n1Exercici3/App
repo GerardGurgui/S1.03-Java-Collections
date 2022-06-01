@@ -1,5 +1,7 @@
 package Backend.Sprint1.S1_03.n1exercici3;
 
+package S1_03.N1Exercici3;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -46,10 +48,10 @@ public class App {
         
         //Obtenim els values (capitals) amb value (PRIMER A COLLECTION) 
         Collection<String> capitalsSet = textFitxerLlista.values();
+        
        
         ArrayList<String> llistaCapitals = new ArrayList<>(capitalsSet);
-       
-       
+        
         /////////  PART 3 -RANDOM I ACERTAR PAIS
 
         int puntuacio;
@@ -67,9 +69,9 @@ public class App {
         System.out.println("Puntuació total: " +totalPuntuacio);
         
         
+        
         /////////// PART 4 GUARDAR EN FITXER
 
-        
         guardarArxiu(nom,totalPuntuacio);
         
     }   
@@ -94,8 +96,8 @@ public class App {
         
         try {
             
-          //archivo = new File("C:\\Users\\formacio\\Desktop\\Gerard\\Sprint1\\S01.03_Collections\\N1Exercici3\\countries.txt");   
-            archivo = new File("C:\\Users\\gerri\\OneDrive\\Escritorio\\countries.txt");   
+            archivo = new File("C:\\Users\\formacio\\Desktop\\Gerard\\Sprint1\\S01.03_Collections\\N1Exercici3\\countries.txt");   
+            //archivo = new File("C:\\Users\\gerri\\OneDrive\\Escritorio\\countries.txt");   
             fr = new FileReader(archivo); 
             br = new BufferedReader(fr); // Creem un BfReader per poder llegir líneas completas 
 
@@ -219,6 +221,7 @@ public class App {
     }
     
     
+    
     static int endavinarCapital(String paisRandom, ArrayList<String> llistaPaisos, ArrayList<String> llistaCapitals){
         
         
@@ -227,6 +230,7 @@ public class App {
         int puntuacio = 0;
         boolean encontrado = false;
         int i = 0;
+        
         
         while(i < llistaPaisos.size() && encontrado == false){
             
@@ -255,7 +259,8 @@ public class App {
         
         try {
             
-            pw = new PrintWriter("C:\\Users\\gerri\\OneDrive\\Escritorio\\puntuacio.txt", "UTF-8");
+            // pw = new PrintWriter("C:\\Users\\gerri\\OneDrive\\Escritorio\\puntuacio.txt", "UTF-8");
+            pw = new PrintWriter("C:\\Users\\formacio\\Desktop\\Gerard\\Sprint1\\S01.03_Collections\\N1Exercici3\\puntuacio.txt"); 
             pw.println(nom);
             pw.println(totalPuntuacio);
             pw.close();
@@ -278,6 +283,9 @@ public class App {
         }
           
     }
+    
+
+}
     
 
 }
